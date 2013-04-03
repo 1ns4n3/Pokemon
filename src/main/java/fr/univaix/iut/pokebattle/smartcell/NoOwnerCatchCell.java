@@ -4,6 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 import fr.univaix.iut.progbd.DAOOwnerJPA;
 import fr.univaix.iut.progbd.DAOPokemonJPA;
@@ -19,6 +22,7 @@ public class NoOwnerCatchCell implements SmartCell {
     	emf = Persistence.createEntityManagerFactory("pokebattlePU");
         em = emf.createEntityManager();
 	}
+	
 	@Override
 	public String ask(Tweet question) {
 		if(question.getText().contains("Pokeball"))
@@ -43,7 +47,7 @@ public class NoOwnerCatchCell implements SmartCell {
          	System.out.println("Qui est l'owner ? " + pokeOwner);
          	
 			// Check good owner
-			if( pokeOwner != null )
+			if (pokeOwner != null)
 			{
 				String pokeOwnerName = pokeOwner.getNom_owner();
 				String answer ="@" + ownerAsk + " @" + pokeOwnerName + " is my owner";
@@ -54,19 +58,10 @@ public class NoOwnerCatchCell implements SmartCell {
 			}
 			else 
 			{
-				System.out.println("No Owner");
-				
-				// Pseudo-code :
-				// DAOOwner dao = new DAOOwaner(em)
-				
-				// Owner newOwner = dao.getById(owernAsk);
-				// if newOwner == null
-				//   newOwner = dao.create
-				// poke.setOwner(newOwner);
-				
-				DAOOwnerJPA daoOwner = new DAOOwnerJPA(em);
+	            
+	            DAOOwnerJPA daoOwner = new DAOOwnerJPA(em);
 				Owner ownerExist = em.find(Owner.class, ownerAsk);
-				if(ownerExist == null)
+				if (ownerExist == null)
 				{
 					Owner own = new Owner(ownerAsk);
 					daoOwner.insert(own);
@@ -75,9 +70,20 @@ public class NoOwnerCatchCell implements SmartCell {
 				else
 					poke.setOwner_poke(ownerExist);
 
+				// Réponse
 				String pokeOwn = poke.getOwner_poke().getNom_owner();
 				String answer = "@" + ownerAsk + " @" + pokeOwn + " is my owner";
 				System.out.println("Nouvel owner : " + answer);
+				
+				// Edition de la description sur Twitter
+				// Ne peut être testée que manuellement
+	            Twitter twitter = question.getTwitter();
+	            if (twitter != null) {
+		            try {
+						twitter.updateProfile(null, null, null, "#pokebattle - #pokemon - Owner: @" + pokeOwn);
+					} catch (TwitterException e) { e.printStackTrace(); }
+	            }
+				
 				em.close();
 	            emf.close();
 				return answer;
