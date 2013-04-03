@@ -14,11 +14,10 @@ public class PokeBot implements Bot {
      * find an answer.
      */
     final SmartCell[] smartCells = new SmartCell[]{
-            new AttackCell(),
+           // new AttackCell(),
             new NoOwnerCatchCell(),
-            new SayPokemonOwnerOnAttackCell(),
-            new PokemonCriesCell(),
-            
+           // new SayPokemonOwnerOnAttackCell(),
+           // new PokemonCriesCell(),      
     };
 
     /**

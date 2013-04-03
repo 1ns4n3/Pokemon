@@ -58,7 +58,7 @@ public class NoOwnerCatchCell implements SmartCell {
 			}
 			else 
 			{
-	            
+	            System.out.println("Pokemon sans owner");
 	            DAOOwnerJPA daoOwner = new DAOOwnerJPA(em);
 				Owner ownerExist = em.find(Owner.class, ownerAsk);
 				if (ownerExist == null)
@@ -79,6 +79,7 @@ public class NoOwnerCatchCell implements SmartCell {
 				// Ne peut être testée que manuellement
 	            Twitter twitter = question.getTwitter();
 	            if (twitter != null) {
+		            System.out.println("Edit descr Twit");
 		            try {
 						twitter.updateProfile(null, null, null, "#pokebattle - #pokemon - Owner: @" + pokeOwn);
 					} catch (TwitterException e) { e.printStackTrace(); }
