@@ -1,19 +1,10 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import fr.univaix.iut.pokebattle.twitter.Tweet;
-
-
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class NoOwnerCatchCellTest {
-	
 	
     @Test
     public void testOwner() {
@@ -28,6 +19,4 @@ public class NoOwnerCatchCellTest {
     	
         assertEquals("@nedseb @nedseb is my owner", cell.ask(new Tweet("nedseb", "@PSYKOKWAK_PKWEM Pokeball!")));
     }
-    
-
 }
