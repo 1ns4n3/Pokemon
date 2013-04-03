@@ -5,7 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import fr.univaix.iut.pokebattle.twitter.Tweet;
+import fr.univaix.iut.progbd.DAOOwnerJPA;
 import fr.univaix.iut.progbd.DAOPokemonJPA;
+import fr.univaix.iut.progbd.Owner;
 import fr.univaix.iut.progbd.Pokemon;
 
 public class WhenKOCell implements SmartCell {
@@ -21,40 +23,30 @@ public class WhenKOCell implements SmartCell {
 	@Override
 	public String ask(Tweet tweet) {
 		
-		/*  pcreux: "@bulbizare1 #attack #charge @pikachuNyanNian /cc @nedseb @viviane"
-			bulbizare1: "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux @viviane"
-
-			nedseb: "@pikachuNyanNian #attack #foudre @bulbizare1 /cc @pcreux @viviane"
-			pikachuNyanNian: "@bulbizare1 #attack #foudre /cc @nedseb @pcreux @viviane"
-
-			viviane: "@bulbizare1 -10pv /cc @pcreux"
-			viviane: "@pikachuNyanNian -10pv /cc @nedseb"
-		
-			bulbizare1: "#KO /cc @viviane @nedseb @pcreux" */
-
-		//String texte = tweet.getText();
-		//String[] tabMots = texte.split(" ");
-		
-		//if(tabMots[0] est un poké et que ses PV <= 0)
-		/*{	
-			//String pokeKO = tabMots[0];
-			
-			String answer = "#KO /cc " /* + @JUGE + + " "
-					/* + "@DRESSEURVAINQUEUR" + "@PRORIOPOKEKO" ;
-			return answer;
-		}*/
 		
 		DAOPokemonJPA dao = new DAOPokemonJPA(em);
+	
 			
-    	String[] alias = tweet.getText().split(" ");
-     	String pokemon = alias[0].toUpperCase();
-     	pokemon = pokemon.substring(1, pokemon.length());
-		Pokemon poke = dao.getById(pokemon);
+		
+		// récupération du pokémon qui est éventuellement KO
+    	String[] alias1 = tweet.getText().split(" ");
+     	String pokemon = alias1[0].substring(1, alias1[0].length()); // on récupère chenipan
+     	pokemon = pokemon.toUpperCase() + "_PKWEM"; // on récupère CHENIPAN_PKWEM
+     	Pokemon poke = dao.getById(pokemon); // NOM DU POKEMON (BD)
+     	Owner own = poke.getOwner_poke();
+     	
+     	
+     	//récupération de l'owner qui a éventuellement mis KO dans notre pokémon : l'owner du screename
+     	String tweeteur = tweet.getScreenName().toUpperCase();
+     	Pokemon attaquant = dao.getById(tweeteur); // on récupère le tweeteur dans la BD : le pokémon qui attaque
+     	Owner owner = attaquant.getOwner_poke(); // owner du pokémon attaquant
+     	
 		
 		if (poke.getPv() == 0) 
 		{
-			// Juge
-			String answer = "#KO /cc @viviane @" + poke.getOwner_poke() + " @"; //indiquer nom du dernier éleveur qui a attaqué poke
+			// tweet envoyé par pikachu: @bulbizare1 #attack #foudre /cc @nedseb @pcreux @viviane
+			// bulbizare1 doit répondre : #KO /cc @viviane @nedseb @pcreux
+			String answer = "#KO /cc @viviane @"+ owner.getNom_owner() + " @" + own.getNom_owner() ;
 			return answer;
 		}
 		else 
