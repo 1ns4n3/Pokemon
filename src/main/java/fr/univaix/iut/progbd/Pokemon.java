@@ -26,6 +26,10 @@ public class Pokemon {
     private int defenseSpecial;
     private int speed;
     private String cri;
+    private int xp;
+    private int pv;
+    private int level; 
+    
     
     @ManyToOne
     @JoinColumn(name="OWNER_POKE")
@@ -117,7 +121,32 @@ public class Pokemon {
         this.speed = speed;
     }
 
-    @Override
+    
+    public int getXp() {
+		return xp;
+	}
+
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+
+	public int getPv() {
+		return pv;
+	}
+
+	public void setPv(int pv) {
+		this.pv = pv;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Pokemon)) return false;
@@ -133,6 +162,10 @@ public class Pokemon {
         if (name != null ? !name.equals(pokemon.name) : pokemon.name != null) return false;
         if (type1 != pokemon.type1) return false;
         if (type2 != pokemon.type2) return false;
+        if (xp != pokemon.xp) return false;
+        if (pv != pokemon.pv) return false;
+        if (cri != pokemon.cri) return false;
+        if (level != pokemon.level) return false;
 
         return true;
     }
@@ -148,23 +181,23 @@ public class Pokemon {
         result = 31 * result + attackSpecial;
         result = 31 * result + defenseSpecial;
         result = 31 * result + speed;
+        result = 31 * result + pv;
+        result = 31 * result + xp;
+        result = 31 * result + level;
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Pokemon{" +
-                "name='" + name + '\'' +
-                ", types1=" + type1 +
-                ", types2=" + type2 +
-                ", baseHP=" + baseHP +
-                ", attack=" + attack +
-                ", defense=" + defense +
-                ", attackSpecial=" + attackSpecial +
-                ", defenseSpecial=" + defenseSpecial +
-                ", speed=" + speed +
-                '}';
-    }
+
+
+	@Override
+	public String toString() {
+		return "Pokemon [name=" + name + ", type1=" + type1 + ", type2="
+				+ type2 + ", baseHP=" + baseHP + ", attack=" + attack
+				+ ", defense=" + defense + ", attackSpecial=" + attackSpecial
+				+ ", defenseSpecial=" + defenseSpecial + ", speed=" + speed
+				+ ", cri=" + cri + ", xp=" + xp + ", pv=" + pv + ", level="
+				+ level + ", owner_poke=" + owner_poke + "]";
+	}
 
 	public String getCri() {
 		return cri;
