@@ -20,6 +20,9 @@ public class OwnerCell implements SmartCell {
 	
 	@Override
 	public String ask(Tweet tweet) {
+		/**
+ 			F3
+ 					**/
 		if(tweet.getText().contains("Owner"))
 		{	
 			System.out.println("OwnerCell");

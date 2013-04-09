@@ -20,6 +20,9 @@ public class SayPokemonOwnerOnAttackCell implements SmartCell {
 	}
 	@Override
 	public String ask(Tweet question) {
+		/**
+ 			F9
+ 					**/
 		System.out.println("SayPokemonOwnerOnAttackCell");
 		if (question.getText().contains("#attack")){
 		

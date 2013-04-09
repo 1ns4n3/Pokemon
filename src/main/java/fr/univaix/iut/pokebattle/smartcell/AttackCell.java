@@ -50,9 +50,10 @@ public class AttackCell implements SmartCell {
          		pokeOwner = pokeOwnerObj.getNom_owner();  // contient le dresseur 
          		System.out.println("Le Pokemon a un dresseur :" + pokeOwner);
          		System.out.println(dresseur);
-         		dresseur.toUpperCase();
+         		dresseur = dresseur.toUpperCase();
 	         	if(pokeOwner.equals(dresseur))
 	         	{
+	         		
 	         		System.out.println("Le Pokemon attaque a cause de son dresseur");
 	         		return pokemonAttacked + " #attack " + attackName
 					          + "! /cc " + "@" + pokeOwner;	

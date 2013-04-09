@@ -22,6 +22,12 @@ public class PokemonCriesCell implements SmartCell {
 	}
 	
     public String ask(Tweet tweet) {
+    	
+    	/**
+    	 		F1/F2
+    	 					**/
+    	
+    	
     	System.out.println("PokemonCriesCell");
         if (tweet.getScreenName() != null && !tweet.getText().contains("Owner")){
             

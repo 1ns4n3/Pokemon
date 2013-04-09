@@ -11,10 +11,10 @@ public class PokeBot implements Bot {
      */
     final SmartCell[] smartCells = new SmartCell[]{
     		 
-    		new SaysOwnerNameCell(),
+    		//new SaysOwnerNameCell(),
     		new AttackCell(),
     		new NoOwnerCatchCell(),
-    		new SayPokemonOwnerOnAttackCell(),
+    		//new SayPokemonOwnerOnAttackCell(),
     		new PokemonCriesCell(),
 		        
     };
