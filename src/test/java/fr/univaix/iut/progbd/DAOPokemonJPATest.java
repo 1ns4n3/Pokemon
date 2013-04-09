@@ -91,9 +91,9 @@ public class DAOPokemonJPATest {
     @Test
     public void testUpdate() throws Exception {
         Pokemon pikachu = dao.getById("PIKACHU_PKWEM");
-        assertThat(pikachu.getAttack()).isGreaterThan(0);
-        pikachu.setAttack(-1);
+        assertThat(pikachu.getAttackSpecial()).isGreaterThan(0);
+        pikachu.setAttackSpecial(-1);
         dao.update(pikachu);
-        assertThat(dao.getById("PIKACHU_PKWEM").getAttack()).isLessThan(0);
+        assertThat(dao.getById("PIKACHU_PKWEM").getAttackSpecial()).isLessThan(0);
     }
 }
