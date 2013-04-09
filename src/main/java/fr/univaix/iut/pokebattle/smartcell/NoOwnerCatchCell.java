@@ -26,7 +26,7 @@ public class NoOwnerCatchCell implements SmartCell {
 	@Override
 	public String ask(Tweet question) {
 		/**
- 				F3?/F4/F5/F6/F8
+ 				F3/F4/F5/F6/F8
  									**/
 		System.out.println("NoOwnerCatchCell");
 		if(question.getText().contains("Pokeball"))
@@ -55,7 +55,7 @@ public class NoOwnerCatchCell implements SmartCell {
 			if (pokeOwner != null)
 			{
 				String pokeOwnerName = pokeOwner.getNom_owner();
-				String answer ="@" + ownerAsk + " @" + pokeOwnerName + " is my owner LOLL";
+				String answer ="@" + ownerAsk + " @" + pokeOwnerName + " is my owner";
 				System.out.println("Owner :" + answer);
 				em.close();
 	            emf.close();
@@ -77,7 +77,7 @@ public class NoOwnerCatchCell implements SmartCell {
 
 				// Réponse
 				String pokeOwn = poke.getOwner_poke().getNom_owner();
-				String answer = "@" + ownerAsk + " @" + pokeOwn + " is my owner LOLL";
+				String answer = "@" + ownerAsk + " @" + pokeOwn + " is my owner";
 				System.out.println("Nouvel owner : " + answer);
 				
 				// Edition de la description sur Twitter
@@ -87,6 +87,7 @@ public class NoOwnerCatchCell implements SmartCell {
 		            System.out.println("Edit descr Twit");
 		            try {
 						twitter.updateProfile(null, null, null, "#pokebattle - #pokemon - Owner: @" + pokeOwn);
+
 					} catch (TwitterException e) { e.printStackTrace(); }
 	            }
 				

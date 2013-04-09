@@ -21,9 +21,11 @@ public class AttackCell implements SmartCell {
 	
 	public String ask(Tweet tweet) {
 		System.out.println("AttackCell");
-		if(tweet.getText().contains("#attack"))
+		if(tweet.getText().contains("#attack") && !tweet.getText().contains("/cc"))
 		{	
-			
+			/**
+				F7
+									**/
 			// ask contains pcreux: "@pikachuNyanNian #attack #foudre @bulbizare1"
 			// answer should contains : "pikachuNyanNian: "@bulbizare1 #attack #foudre! /cc @pcreux"
 			
