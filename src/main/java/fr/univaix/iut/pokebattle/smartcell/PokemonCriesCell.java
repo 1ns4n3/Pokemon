@@ -22,15 +22,18 @@ public class PokemonCriesCell implements SmartCell {
 	}
 	
     public String ask(Tweet tweet) {
-        if (tweet.getScreenName() != null){
+    	System.out.println("PokemonCriesCell");
+        if (tweet.getScreenName() != null && !tweet.getText().contains("Owner")){
             
         	DAOPokemonJPA dao = new DAOPokemonJPA(em);
         	
         	// Contains ?
+        	System.out.println(tweet.getText());
+        	System.out.println(tweet.getScreenName());
         	String[] alias = tweet.getText().split(" ");
          	String pokemon = alias[0].toUpperCase();
          	pokemon = pokemon.substring(1, pokemon.length());
-
+         	System.out.println(pokemon);
          	
         	Pokemon poke = dao.getById(pokemon);
         	String cri = poke.getCri();
@@ -45,7 +48,9 @@ public class PokemonCriesCell implements SmartCell {
             
             return r;
         }
-        else
-        	return null;
+        else{
+            	return null;
+        }
+        	
     }
 }

@@ -6,7 +6,7 @@ public class InactivePokeGraduallyRegainsHealthCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet question) {
-		
+		System.out.println("InactivePokeGraduallyRegainsHealth");
 		// 	ex :
 		// 8h30
 		// 	pcreux: "@bulbizare1 #stat #PV ?"

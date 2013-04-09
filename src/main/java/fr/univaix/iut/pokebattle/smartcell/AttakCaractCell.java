@@ -6,7 +6,7 @@ public class AttakCaractCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet question) {
-		
+		System.out.println("AttakCaractCell");
 		// 	ex :
 		// 	pcreux: "@bulbizare1 #statAttack #PP #charge ?"
 		//  bulbizare1: "@pcreux #charge #PP=10/35"

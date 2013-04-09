@@ -20,33 +20,37 @@ public class AttackCell implements SmartCell {
 	}
 	
 	public String ask(Tweet tweet) {
+		System.out.println("AttackCell");
 		if(tweet.getText().contains("#attack"))
 		{	
+			
 			// ask contains pcreux: "@pikachuNyanNian #attack #foudre @bulbizare1"
 			// answer should contains : "pikachuNyanNian: "@bulbizare1 #attack #foudre! /cc @pcreux"
 			
-			System.out.println("AttackCell");
 			
 			String alias = tweet.getText();
 			String[] alias2 = alias.split(" ");
-			String pokemonAttacked = alias2[3];
-			String attackName = alias2[2];
-			String pokemon = alias2[0].toUpperCase();
+			String pokemonAttacked = alias2[3]; // contient bulbizarre1
+			String attackName = alias2[2];		// contient #foudre
+			String pokemon = alias2[0].toUpperCase();	// contient PIKACHUNYANNIAN
          	pokemon = pokemon.substring(1, pokemon.length());
-			String dresseur = tweet.getScreenName();
+         	pokemon = pokemon.toUpperCase();
+			String dresseur = tweet.getScreenName();	// contient pcreux
 			
 			
 			/*check good owner*/
 			DAOPokemonJPA dao = new DAOPokemonJPA(em);
          	Pokemon poke = dao.getById(pokemon);
          	Owner pokeOwnerObj = poke.getOwner_poke();
+         	System.out.println(pokeOwnerObj);
          	
          	String pokeOwner;
          	if(pokeOwnerObj != null)
          	{
-         		pokeOwner = pokeOwnerObj.getNom_owner();
+         		pokeOwner = pokeOwnerObj.getNom_owner();  // contient le dresseur 
          		System.out.println("Le Pokemon a un dresseur :" + pokeOwner);
          		System.out.println(dresseur);
+         		dresseur.toUpperCase();
 	         	if(pokeOwner.equals(dresseur))
 	         	{
 	         		System.out.println("Le Pokemon attaque a cause de son dresseur");
@@ -65,10 +69,11 @@ public class AttackCell implements SmartCell {
          	}
          		
 		}
-		System.out.println("WTF");
-		em.close();
-        emf.close();
-		return null;
+		else {
+
+			return null;
+		}
+		
 	}
 
 }

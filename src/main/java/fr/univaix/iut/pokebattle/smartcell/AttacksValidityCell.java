@@ -6,7 +6,7 @@ public class AttacksValidityCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet question) {
-		
+		System.out.println("AttacksValidityCell");
 		// 	ex :
 		// 	pcreux: "@bulbizare1 #attack #charge @pikachuNyanNian /cc @nedseb @viviane"
 		//  bulbizare1: "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux @viviane"

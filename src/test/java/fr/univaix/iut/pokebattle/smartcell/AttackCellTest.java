@@ -1,10 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
@@ -19,15 +15,15 @@ public class AttackCellTest {
     public void testAttack() {
     	AttackCell cell = new AttackCell();
     	
-    	assertEquals("@SALAMECHE_PKWEM #attack #foudre! /cc @WII2ZO", cell.ask(new Tweet("WII2ZO", "@PIKACHU_PKWEM #attack #foudre @SALAMECHE_PKWEM")));
+    	assertEquals("@PIKACHU_PKWEM #attack #foudre! /cc @EILLISIS", cell.ask(new Tweet("EILLISIS", "@SALAMECHE_PKWEM #attack #foudre @PIKACHU_PKWEM")));
     }
 
-    @Test
+    /*@Test
     public void testNoAttack() {
     	AttackCell cell = new AttackCell();
     	
         assertEquals("@nedseb @nedseb is my owner", cell.ask(new Tweet("nedseb", "@PSYKOKWAK_PKWEM #attack #foudre @SALAMECHE_PKWEM")));
-    }
+    }*/
     
 
 }

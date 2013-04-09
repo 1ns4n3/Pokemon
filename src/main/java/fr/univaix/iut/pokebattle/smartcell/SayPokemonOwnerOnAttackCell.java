@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import fr.univaix.iut.pokebattle.twitter.Tweet;
-import fr.univaix.iut.progbd.DAOOwnerJPA;
 import fr.univaix.iut.progbd.DAOPokemonJPA;
 import fr.univaix.iut.progbd.Owner;
 import fr.univaix.iut.progbd.Pokemon;
@@ -21,6 +20,8 @@ public class SayPokemonOwnerOnAttackCell implements SmartCell {
 	}
 	@Override
 	public String ask(Tweet question) {
+		System.out.println("SayPokemonOwnerOnAttackCell");
+		if (question.getText().contains("#attack")){
 		
 		// ask contains pcreux: "@bulbizare1 #attack #charge @pikachuNyanNian /cc @nedseb"
 		// answer should contains : bulbizare1: "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux"
@@ -54,6 +55,11 @@ public class SayPokemonOwnerOnAttackCell implements SmartCell {
 		{
 			em.close();
 	        emf.close();
+			return null;
+		}
+		}
+		else
+		{
 			return null;
 		}
 	}

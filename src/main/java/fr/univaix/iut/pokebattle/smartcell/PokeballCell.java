@@ -6,6 +6,7 @@ public class PokeballCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet question) {
+		System.out.println("PokeballCell");
 		if(question.getText().contains("PokeBall"))
 		{
 			String reponse = "@" + question.getScreenName() + " ";

@@ -6,7 +6,7 @@ public class AnswerJugeCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet tweet) {
-		
+		System.out.println("AnswerJudeCell");
 		String texte = tweet.getText();
 		String[] tabMots = texte.split(" ");
 		String pokeAttaquant = tweet.getScreenName();

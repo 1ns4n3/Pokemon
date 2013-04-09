@@ -9,7 +9,7 @@ import fr.univaix.iut.progbd.DAOPokemonJPA;
 import fr.univaix.iut.progbd.Owner;
 import fr.univaix.iut.progbd.Pokemon;
 
-public class SaysOwnerNameCell {
+public class SaysOwnerNameCell implements SmartCell {
 	
 	private EntityManagerFactory emf; 
 	private EntityManager em;
@@ -20,8 +20,11 @@ public class SaysOwnerNameCell {
 	}
 	
 	public String ask(Tweet question) {
-		if(question.getText().contains("Owner?"))
+		System.out.println("SaysOwnerNameCell");
+		if(question.getText().contains("Owner") || question.getText().contains("owner") ||
+		   question.getText().contains("OWNER"))
 		{	
+			
 			String ownerAsk = question.getScreenName();
 			String response = null;
 			
@@ -40,7 +43,8 @@ public class SaysOwnerNameCell {
 		 	}
 		 	else 
 		 		response = "@" + ownerAsk + " No owner";
-		 	
+		 	em.close();
+            emf.close();
 			return response;
 		}
 		return null;

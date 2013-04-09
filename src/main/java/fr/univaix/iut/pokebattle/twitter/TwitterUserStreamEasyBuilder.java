@@ -44,7 +44,7 @@ public class TwitterUserStreamEasyBuilder {
             return;
         }
 
-        String response = bot.ask(new Tweet(status.getUser().getScreenName(), status.getText(), twitter));
+        String response = bot.ask(new Tweet(status.getText(),status.getUser().getScreenName(),  twitter));
 
         if (response != null) {
             twitter.updateStatus(response);

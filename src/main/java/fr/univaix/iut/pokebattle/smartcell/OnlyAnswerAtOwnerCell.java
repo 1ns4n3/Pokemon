@@ -20,7 +20,7 @@ public class OnlyAnswerAtOwnerCell implements SmartCell {
     
 	@Override
 	public String ask(Tweet tweet) {
-		
+		System.out.println("OnlyAnswerAtOwnerCell");
 		DAOPokemonJPA dao = new DAOPokemonJPA(em);
 		//pcreux: "@pikachuNyanNian #attack #foudre @bulbizare1"
 		//pikachuNyanNian: "@pcreux @nedseb is my owner"

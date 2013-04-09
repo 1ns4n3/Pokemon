@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import fr.univaix.iut.pokebattle.twitter.Tweet;
-import fr.univaix.iut.progbd.DAOOwnerJPA;
 import fr.univaix.iut.progbd.DAOPokemonJPA;
 import fr.univaix.iut.progbd.Owner;
 import fr.univaix.iut.progbd.Pokemon;
@@ -23,7 +22,7 @@ public class WhenKOCell implements SmartCell {
 	@Override
 	public String ask(Tweet tweet) {
 		
-		
+		System.out.println("WhenKoCell");
 		DAOPokemonJPA dao = new DAOPokemonJPA(em);
 	
 			

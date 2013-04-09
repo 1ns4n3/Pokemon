@@ -20,7 +20,7 @@ public class CaractCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet tweet) {
-		
+		System.out.println("CaractCell");
 		// 	ex :
 		// 	pcreux: "@bulbizare1 #stat #level ?"
 		// 	bulbizare1: "@pcreux #level=1"

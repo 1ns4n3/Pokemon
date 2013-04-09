@@ -22,6 +22,7 @@ public class OwnerCell implements SmartCell {
 	public String ask(Tweet tweet) {
 		if(tweet.getText().contains("Owner"))
 		{	
+			System.out.println("OwnerCell");
 			DAOPokemonJPA dao = new DAOPokemonJPA(em);
 			
 			// ask contains pcreux: "pcreux: "@pikachuNyanNian Owner?"

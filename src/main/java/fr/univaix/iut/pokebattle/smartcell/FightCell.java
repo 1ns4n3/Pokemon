@@ -6,7 +6,7 @@ public class FightCell implements SmartCell {
 
 	@Override
 	public String ask(Tweet question) {
-		
+		System.out.println("FigthCell");
 		// 	ex :
 		// 	pcreux: "@nedseb #fight with @bulbizare1 /cc @viviane"
 		//  nedseb: "@pcreux #fight #ok with @pikachuNyanNian /cc @viviane"

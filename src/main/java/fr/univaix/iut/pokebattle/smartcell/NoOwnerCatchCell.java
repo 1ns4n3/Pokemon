@@ -25,8 +25,10 @@ public class NoOwnerCatchCell implements SmartCell {
 	
 	@Override
 	public String ask(Tweet question) {
+		System.out.println("NoOwnerCatchCell");
 		if(question.getText().contains("Pokeball"))
 		{	
+			
 			// ask contains pcreux: "pcreux: "@pikachuNyanNyan Pokeball!"
 			// answer should contains : pikachuNyanNian: "@pcreux @pcreux is my owner"
 			
@@ -91,8 +93,7 @@ public class NoOwnerCatchCell implements SmartCell {
 			}
 		}
 		
-		em.close();
-        emf.close();
+
 		return null;
 	}
 }
