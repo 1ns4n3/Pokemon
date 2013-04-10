@@ -20,6 +20,7 @@ public class AttackCell implements SmartCell {
 	}
 	
 	public String ask(Tweet tweet) {
+		System.out.println("AttackCell");
 		if(tweet.getText().contains("#attack") && !tweet.getText().contains("/cc"))
 		{	
 			/**

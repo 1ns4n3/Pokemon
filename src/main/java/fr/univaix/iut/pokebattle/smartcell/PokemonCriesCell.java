@@ -22,11 +22,12 @@ public class PokemonCriesCell implements SmartCell {
 	}
 	
     public String ask(Tweet tweet) {
-    	
+    	System.out.println("PokemonCriesCell");
     	/**
     	 		F1/F2
     	 					**/
-        if (tweet.getScreenName() != null && !tweet.getText().contains("Owner"))
+        if (tweet.getScreenName() != null && !tweet.getText().contains("Owner")
+        		&& !tweet.getText().contains("Viviane_PKWEM"))
         {
             
         	DAOPokemonJPA dao = new DAOPokemonJPA(em);
