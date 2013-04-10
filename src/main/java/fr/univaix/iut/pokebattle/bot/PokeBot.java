@@ -16,7 +16,7 @@ public class PokeBot implements Bot {
     		new NoOwnerCatchCell(), // F3/F4/F5/F6/F8
     		new SayPokemonOwnerOnAttackCell(), // F9 !
     		new PokemonCriesCell(), // F1/F2
-		        
+ 
     };
 
     /**

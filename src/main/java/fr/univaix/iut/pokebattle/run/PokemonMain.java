@@ -11,6 +11,5 @@ public class PokemonMain {
         BotRunner.runBot(new PokeBot(), "psykokwak.properties");
         BotRunner.runBot(new PokeBot(), "salameche.properties");
         BotRunner.runBot(new JudgeBot(), "viviane.properties");
-
     }
 }
