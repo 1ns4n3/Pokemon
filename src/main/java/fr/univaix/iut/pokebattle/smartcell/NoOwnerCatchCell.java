@@ -25,6 +25,7 @@ public class NoOwnerCatchCell implements SmartCell {
 	
 	@Override
 	public String ask(Tweet question) {
+		System.out.println("NoOwnerCatchCell");
 		/**
  				F3/F4/F5/F6/F8
  									**/

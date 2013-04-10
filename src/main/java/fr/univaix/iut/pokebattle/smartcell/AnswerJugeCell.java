@@ -12,16 +12,30 @@ public class AnswerJugeCell implements SmartCell {
 	
 	@Override
 	public String ask(Tweet tweet) {
-		System.out.println("AnswerJudeCell");
-		String texte = tweet.getText();
-		String[] tabMots = texte.split(" ");
-		String pokeAttaque = tabMots[0];
-		String reponseJuge = pokeAttaque + " -10pv /cc "
-				                  + tabMots[4];
-		
-		return reponseJuge;
+		System.out.println("AnswerJugeCell");
+		if(tweet.getText().contains("@Viviane_PKWEM"))
+		{
+			//pcreux: "@bulbizare1 #attack #charge @pikachuNyanNian /cc @nedseb @viviane"
+			//bulbizare1: "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux @viviane"
+			//viviane: "@pikachuNyanNian -10pv /cc @pcreux"
+			if(	tweet.getScreenName().contains("Psykokwak_PKWEM") 	||
+				tweet.getScreenName().contains("Salameche_PKWEM") 	||
+				tweet.getScreenName().contains("Pikachu_PKWEM") 	||
+				tweet.getScreenName().contains("Chenipan_PKWEM") 	||
+				tweet.getScreenName().contains("Abra_PKWEM") 
+					)
+			{
+				String texte = tweet.getText();
+				String[] tabMots = texte.split(" ");
+				String pokeAttaque = tabMots[0];
+				String reponseJuge = pokeAttaque + " -10pv /cc "
+						                  + tabMots[4];
+				
+				return reponseJuge;
+			}
+			else
+				return null;
+		}
+		return null;
 	}
-	//pcreux: "@bulbizare1 #attack #charge @pikachuNyanNian /cc @nedseb @viviane"
-	//bulbizare1: "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux @viviane"
-	//viviane: "@pikachuNyanNian -10pv /cc @pcreux"
 }
