@@ -12,8 +12,8 @@ public class AnswerJugeCellTest {
     public void testJuge() {
     	AnswerJugeCell cell = new AnswerJugeCell();
     	
-    	assertEquals("@pikachuNyanNian -10pv /cc @nedseb",
-    			cell.ask(new Tweet("bulbizare1", "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux @viviane")));
+    	assertEquals("@Salameche_PKWEM -10pv /cc @EILLISIS",
+    			cell.ask(new Tweet("Psykokwak_PKWEM", "@Salameche_PKWEM #attack #charge /cc @EILLISIS @1NSAN3_ @Viviane_PKWEM")));
     }
 
 }
