@@ -24,7 +24,8 @@ public class SayPokemonOwnerOnAttackCell implements SmartCell {
  			F9
  					**/
 		System.out.println("SayPokemonOwnerOnAttackCell");
-		if (question.getText().contains("#attack") && question.getText().contains("/cc")){
+		if (question.getText().contains("#attack") && question.getText().contains("/cc")
+				&& !question.getText().contains("@viviane_PKWEM")){
 		
 		// ask contains pcreux: "@bulbizare1 #attack #charge @pikachuNyanNian /cc @nedseb"
 		// answer should contains : bulbizare1: "@pikachuNyanNian #attack #charge /cc @nedseb @pcreux"
