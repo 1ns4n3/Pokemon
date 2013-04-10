@@ -25,3 +25,6 @@ public class WhenKOCellTest {
 	}
 
 }
+
+//tweet envoyé par salameche_pkem: @chenipan_pkem #attack #charge /cc @eillisis @paulmista @viviane
+// chenipan_pkem doit répondre : #KO /cc @viviane @eillisis @paulmista
