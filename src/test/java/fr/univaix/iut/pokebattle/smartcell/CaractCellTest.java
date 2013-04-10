@@ -13,7 +13,7 @@ public class CaractCellTest {
 		CaractCell cell = new CaractCell();
     	
     	assertEquals("@Paulmista #level=1", cell.ask(new Tweet("Paulmista", "@CHENIPAN_PKWEM #stat #level ?")));
-    	assertEquals("@Paulmista #PV=100/100", cell.ask(new Tweet("Paulmista", "@CHENIPAN_PKWEM #stat #PV ?")));
+    	assertEquals("@Paulmista #PV=0/100", cell.ask(new Tweet("Paulmista", "@CHENIPAN_PKWEM #stat #PV ?")));
     	assertEquals("@Paulmista #XP=0", cell.ask(new Tweet("Paulmista", "@CHENIPAN_PKWEM #stat #XP ?")));
     	
 	}

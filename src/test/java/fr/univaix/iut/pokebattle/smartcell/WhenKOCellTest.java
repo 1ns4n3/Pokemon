@@ -19,9 +19,9 @@ public class WhenKOCellTest {
     	WhenKOCell cell = new WhenKOCell();
 
     	assertEquals("#KO /cc @viviane @EILLISIS @PAULMISTA",
-    			cell.ask(new Tweet("SALAMECHE_PKWEM", "@chenipan #attack #feu /cc @eillisis @paulmista @viviane")));
+    			cell.ask(new Tweet("SALAMECHE_PKWEM", "@chenipan_pkwem #attack #charge /cc @eillisis @paulmista @viviane")));
     	assertEquals(null,
-    			cell.ask(new Tweet("CHENIPAN_PKWEM", "@salameche #attack #feu /cc @paulmista @eillisis @viviane")));  
+    			cell.ask(new Tweet("CHENIPAN_PKWEM", "@salameche_pkwem #attack #charge /cc @paulmista @eillisis @viviane")));  
 	}
 
 }
