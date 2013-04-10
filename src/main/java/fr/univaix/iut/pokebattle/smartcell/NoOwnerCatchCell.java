@@ -28,6 +28,7 @@ public class NoOwnerCatchCell implements SmartCell {
 		/**
  				F3/F4/F5/F6/F8
  									**/
+		System.out.println("NoOwnerCatchCell");
 		if(question.getText().contains("Pokeball"))
 		{	
 			
@@ -45,20 +46,24 @@ public class NoOwnerCatchCell implements SmartCell {
          	// Check owner exist
          	DAOPokemonJPA dao = new DAOPokemonJPA(em);
          	Pokemon poke = dao.getById(pokemon);
+         	System.out.println("tests");
          	Owner pokeOwner = poke.getOwner_poke();
 
+         	System.out.println("Qui est l'owner ? " + pokeOwner);
          	
 			// Check good owner
 			if (pokeOwner != null)
 			{
 				String pokeOwnerName = pokeOwner.getNom_owner();
 				String answer ="@" + ownerAsk + " @" + pokeOwnerName + " is my owner";
+				System.out.println("Owner :" + answer);
 				em.close();
 	            emf.close();
 				return  answer;
 			}
 			else 
 			{
+	            System.out.println("Pokemon sans owner");
 	            DAOOwnerJPA daoOwner = new DAOOwnerJPA(em);
 				Owner ownerExist = em.find(Owner.class, ownerAsk);
 				if (ownerExist == null)
@@ -73,21 +78,17 @@ public class NoOwnerCatchCell implements SmartCell {
 				// Réponse
 				String pokeOwn = poke.getOwner_poke().getNom_owner();
 				String answer = "@" + ownerAsk + " @" + pokeOwn + " is my owner";
+				System.out.println("Nouvel owner : " + answer);
 				
 				// Edition de la description sur Twitter
 				// Ne peut être testée que manuellement
 	            Twitter twitter = question.getTwitter();
-	            if (twitter != null) 
-	            {
-		            try 
-		            {
+	            if (twitter != null) {
+		            System.out.println("Edit descr Twit");
+		            try {
 						twitter.updateProfile(null, null, null, "#pokebattle - #pokemon - Owner: @" + pokeOwn);
-					} 
-		            catch (TwitterException e) 
-		            { 
-		            	e.printStackTrace(); 
-		            }
-	            
+
+					} catch (TwitterException e) { e.printStackTrace(); }
 	            }
 				
 				em.close();
@@ -95,6 +96,8 @@ public class NoOwnerCatchCell implements SmartCell {
 				return answer;
 			}
 		}
+		
+
 		return null;
 	}
 }

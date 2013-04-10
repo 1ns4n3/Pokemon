@@ -20,10 +20,11 @@ public class AttackCell implements SmartCell {
 	}
 	
 	public String ask(Tweet tweet) {
+		System.out.println("AttackCell");
 		if(tweet.getText().contains("#attack") && !tweet.getText().contains("/cc"))
 		{	
 			/**
-						F7
+				F7
 									**/
 			// ask contains pcreux: "@pikachuNyanNian #attack #foudre @bulbizare1"
 			// answer should contains : "pikachuNyanNian: "@bulbizare1 #attack #foudre! /cc @pcreux"
@@ -43,15 +44,19 @@ public class AttackCell implements SmartCell {
 			DAOPokemonJPA dao = new DAOPokemonJPA(em);
          	Pokemon poke = dao.getById(pokemon);
          	Owner pokeOwnerObj = poke.getOwner_poke();
+         	System.out.println(pokeOwnerObj);
          	
          	String pokeOwner;
          	if(pokeOwnerObj != null)
          	{
          		pokeOwner = pokeOwnerObj.getNom_owner();  // contient le dresseur 
+         		System.out.println("Le Pokemon a un dresseur :" + pokeOwner);
+         		System.out.println(dresseur);
          		dresseur = dresseur.toUpperCase();
 	         	if(pokeOwner.equals(dresseur))
 	         	{
 	         		
+	         		System.out.println("Le Pokemon attaque a cause de son dresseur");
 	         		return pokemonAttacked + " #attack " + attackName
 					          + "! /cc " + "@" + pokeOwner;	
 	         	}
@@ -62,13 +67,16 @@ public class AttackCell implements SmartCell {
          	}
          	else
          	{
+         		System.out.println("Le Pokemon n'a pas de dresseur");
          		return "@" + dresseur + " @" + dresseur + " is my owner";
          	}
          		
 		}
-		else 
-		{
+		else {
+
 			return null;
-		}	
+		}
+		
 	}
+
 }
